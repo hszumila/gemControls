@@ -18,9 +18,29 @@ resTot = 0.0
 for ii in range(len(res)):
     resTot += res[ii]
 
+#############################################################
+# Clear board errors
+#############################################################
+def clearStatus(arm):
+    if arm==0: #BB
+        os.system('caput HAHV70:00:ClrAlarm 1')
+        os.system('caput HAHV70:01:ClrAlarm 1')
+        os.system('caput HAHV70:01:ClrAlarm 1')
+        os.system('caput HAHV70:02:ClrAlarm 1')
+    else:
+        os.system('caput HAHV71:00:ClrAlarm 1')
+        os.system('caput HAHV70:03:ClrAlarm 1')
+        os.system('caput HAHV70:04:ClrAlarm 1')
+        os.system('caput HAHV71:01:ClrAlarm 1')
+        os.system('caput HAHV70:05:ClrAlarm 1')
+        os.system('caput HAHV71:05:ClrAlarm 1')
+        os.system('caput HAHV71:02:ClrAlarm 1')
+        os.system('caput HAHV71:03:ClrAlarm 1')
+        os.system('caput HAHV71:04:ClrAlarm 1')
+        os.system('caput HAHV71:04:ClrAlarm 1')
 
 #############################################################
-# Gets the current from the IMon and averages over some time:--not implented yet!
+# Gets the current from the IMon and averages over some time:
 #############################################################
 def calcCurrent(layer,timeavg):
     cur0 = []

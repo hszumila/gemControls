@@ -205,6 +205,12 @@ def setHVsbs18():
     itripover=float(setitripoverinp.get(1.0,"end-1c"))
     niter=float(setiterinp.get(1.0,"end-1c"))
     setHV.setHVch(layer,hv,itrip,itripover,niter)
+
+def clearStatusBB():
+    setHV.clearStatus(0)
+
+def clearStatusSBS():
+    setHV.clearStatus(1)
     
 window=tk.Tk()
 window.geometry('975x680')
@@ -373,6 +379,11 @@ sbs17btn.place(x=280,y=530)
 sbs18.place(x=15,y=570)
 sbs18inp.place(x=120,y=570)
 sbs18btn.place(x=280,y=570)
+
+bbClrbtn=tk.Button(window,text="Clear BB status",command=clearStatusBB)
+sbsClrbtn=tk.Button(window,text="Clear SBS status",command=clearStatusSBS)
+bbClrbtn.place(x=775,y=100)
+sbsClrbtn.place(x=775,y=150)
 
 setitrip=tk.Label(text="Set trip limit? 0 to disable", fg='black',font=("Arial",10))
 setitripinp=tk.Text(window, height=1, width=20)
