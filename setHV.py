@@ -84,20 +84,20 @@ def calcCurrent(layer,timeavg):
                     cur0.append(os.system('caget HAHV71:01:0%d:IMon' % ii))
             elif layer==14:
                 for ii in range(7): 
-                    cur0.append(os.system('caget HAHV72:00:00%d:IMon' % ii))        
+                    cur0.append(os.system('caget HAHV70:05:00%d:IMon' % ii))        
             elif layer==15:
                 for ii in range(7,10):
-                    cur0.append(os.system('caget HAHV72:00:00%d:IMon' % ii))
+                    cur0.append(os.system('caget HAHV70:05:00%d:IMon' % ii))
                 for ii in range(10,14):
-                    cur0.append(os.system('caget HAHV72:00:0%d:IMon' % ii))
+                    cur0.append(os.system('caget HAHV70:05:0%d:IMon' % ii))
             elif layer==16:
                 for ii in range(7): 
-                    cur0.append(os.system('caget HAHV72:01:00%d:IMon' % ii))        
+                    cur0.append(os.system('caget HAHV71:05:00%d:IMon' % ii))        
             elif layer==17:
                 for ii in range(7,10):
-                    cur0.append(os.system('caget HAHV72:01:00%d:IMon' % ii))
+                    cur0.append(os.system('caget HAHV71:05:00%d:IMon' % ii))
                 for ii in range(10,14):
-                    cur0.append(os.system('caget HAHV72:01:0%d:IMon' % ii))
+                    cur0.append(os.system('caget HAHV71:05:0%d:IMon' % ii))
             elif layer==18:
                 for ii in range(7): 
                     cur0.append(os.system('caget HAHV71:02:00%d:IMon' % ii))        
@@ -181,20 +181,20 @@ def calcCurrent(layer,timeavg):
                     cur0[ii-7] += os.system('caget HAHV71:01:0%d:IMon' % ii)
             elif layer==14:
                 for ii in range(7): 
-                    cur0[ii] += os.system('caget HAHV72:00:00%d:IMon' % ii)       
+                    cur0[ii] += os.system('caget HAHV70:05:00%d:IMon' % ii)       
             elif layer==15:
                 for ii in range(7,10):
-                    cur0[ii-7] += os.system('caget HAHV72:00:00%d:IMon' % ii)
+                    cur0[ii-7] += os.system('caget HAHV70:05:00%d:IMon' % ii)
                 for ii in range(10,14):
-                    cur0[ii-7] += os.system('caget HAHV72:00:0%d:IMon' % ii)
+                    cur0[ii-7] += os.system('caget HAHV70:05:0%d:IMon' % ii)
             elif layer==16:
                 for ii in range(7): 
-                    cur0[ii] += os.system('caget HAHV72:01:00%d:IMon' % ii)        
+                    cur0[ii] += os.system('caget HAHV71:05:00%d:IMon' % ii)        
             elif layer==17:
                 for ii in range(7,10):
-                    cur0[ii-7] += os.system('caget HAHV72:01:00%d:IMon' % ii)
+                    cur0[ii-7] += os.system('caget HAHV71:05:00%d:IMon' % ii)
                 for ii in range(10,14):
-                    cur0[ii-7] += os.system('caget HAHV72:01:0%d:IMon' % ii)
+                    cur0[ii-7] += os.system('caget HAHV71:05:0%d:IMon' % ii)
             elif layer==18:
                 for ii in range(7): 
                     cur0[ii] += os.system('caget HAHV71:02:00%d:IMon' % ii)        
@@ -221,7 +221,7 @@ def calcCurrent(layer,timeavg):
                     cur0[ii-7] += os.system('caget HAHV71:04:0%d:IMon' % ii)
         time.sleep(1)
 
-    for ii in timeavg:
+    for ii in range(timeavg):
         cur0[ii] = cur0[ii]/timeavg
     return cur0   
     
@@ -419,32 +419,32 @@ def setHVch(layer,hv,setitrip,itripOverhead,niter):
                     os.system('caput HAHV71:01:0%d:I0Set %.2f' % (ii,curN[ii-7]+itripOverhead))
         elif layer==14: #XY L9M23
             for ii in range(7): 
-                os.system('caput HAHV72:00:00%d:V0Set %.2f' % (ii,v0ch[ii]))
+                os.system('caput HAHV70:05:00%d:V0Set %.2f' % (ii,v0ch[ii]))
                 if setitrip !=0:
-                    os.system('caput HAHV72:00:00%d:I0Set %.2f' % (ii,curN[ii]+itripOverhead))
+                    os.system('caput HAHV70:05:00%d:I0Set %.2f' % (ii,curN[ii]+itripOverhead))
         elif layer==15: #XY L8M01
             for ii in range(7,10):
-                os.system('caput HAHV72:00:00%d:V0Set %.2f' % (ii,v0ch[ii-7]))
+                os.system('caput HAHV70:05:00%d:V0Set %.2f' % (ii,v0ch[ii-7]))
                 if setitrip !=0:
-                    os.system('caput HAHV72:00:00%d:I0Set %.2f' % (ii,curN[ii-7]+itripOverhead))
+                    os.system('caput HAHV70:05:00%d:I0Set %.2f' % (ii,curN[ii-7]+itripOverhead))
             for ii in range(10,14):
-                os.system('caput HAHV72:00:0%d:V0Set %.2f' % (ii,v0ch[ii-7]))
+                os.system('caput HAHV70:05:0%d:V0Set %.2f' % (ii,v0ch[ii-7]))
                 if setitrip !=0:
-                    os.system('caput HAHV72:00:0%d:I0Set %.2f' % (ii,curN[ii-7]+itripOverhead))
+                    os.system('caput HAHV70:05:0%d:I0Set %.2f' % (ii,curN[ii-7]+itripOverhead))
         elif layer==16: #XY L8M23
             for ii in range(7): 
-                os.system('caput HAHV72:01:00%d:V0Set %.2f' % (ii,v0ch[ii]))
+                os.system('caput HAHV71:05:00%d:V0Set %.2f' % (ii,v0ch[ii]))
                 if setitrip !=0:
-                    os.system('caput HAHV72:01:00%d:I0Set %.2f' % (ii,curN[ii]+itripOverhead))
+                    os.system('caput HAHV71:05:00%d:I0Set %.2f' % (ii,curN[ii]+itripOverhead))
         elif layer==17: #XY L9M01
             for ii in range(7,10):
-                os.system('caput HAHV72:01:00%d:V0Set %.2f' % (ii,v0ch[ii-7]))
+                os.system('caput HAHV71:05:00%d:V0Set %.2f' % (ii,v0ch[ii-7]))
                 if setitrip !=0:
-                    os.system('caput HAHV72:01:00%d:I0Set %.2f' % (ii,curN[ii-7]+itripOverhead))
+                    os.system('caput HAHV71:05:00%d:I0Set %.2f' % (ii,curN[ii-7]+itripOverhead))
             for ii in range(10,14):
-                os.system('caput HAHV72:01:0%d:V0Set %.2f' % (ii,v0ch[ii-7]))
+                os.system('caput HAHV71:05:0%d:V0Set %.2f' % (ii,v0ch[ii-7]))
                 if setitrip !=0:
-                    os.system('caput HAHV72:01:0%d:I0Set %.2f' % (ii,curN[ii-7]+itripOverhead))
+                    os.system('caput HAHV71:05:0%d:I0Set %.2f' % (ii,curN[ii-7]+itripOverhead))
         elif layer==18: #XY L3M3L2M1
             for ii in range(7): 
                 os.system('caput HAHV71:02:00%d:V0Set %.2f' % (ii,v0ch[ii]))
